@@ -1,0 +1,40 @@
+{
+  "name": "@tunein/audio-player-react",
+  "version": "0.0.0",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./styles.css": "./dist/index.css",
+    "./*": "./dist/*.js"
+  },
+  "private": true,
+  "scripts": {
+    "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
+    "build:components": "tsc",
+    "check-types": "tsc --noEmit",
+    "dev:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+    "dev:components": "tsc --watch",
+    "lint": "eslint src --max-warnings 0"
+  },
+  "dependencies": {
+    "@tunein/audio-player": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "@tunein/eslint-config": "workspace:*",
+    "@tunein/tailwind-config": "workspace:*",
+    "@tunein/typescript-config": "workspace:*",
+    "eslint": "^8.57.0",
+    "typescript": "5.5.4",
+    "@tailwindcss/cli": "^4.1.5",
+    "tailwindcss": "^4.1.5"
+  }
+}

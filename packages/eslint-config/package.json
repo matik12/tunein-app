@@ -1,0 +1,14 @@
+{
+  "name": "@tunein/eslint-config",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0"
+  }
+}

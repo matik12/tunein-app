@@ -1,0 +1,8 @@
+{
+  "extends": "@tunein/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["dist", "build", "node_modules"]
+}
