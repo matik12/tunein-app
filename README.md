@@ -1,4 +1,25 @@
-# TuneIn App
+[![Main Workflow](https://github.com/matik12/tunein-app/actions/workflows/main.yml/badge.svg)](https://github.com/matik12/tunein-app/actions/workflows/main.yml)
+
+# What's TuneIn App?
+
+- A single-page React application for streaming radio stations with a custom audio player and modern UI based on [vite](https://vitejs.dev) skeleton using Typescript and Tailwind (monorepo includes few productivity improvements).
+- App displays available stations with filtering/sorting options and provides station playback functionality.
+- App uses sample S3 based Station API to fetch stations.
+- App relies on custom, flexible and extensible audio player implementation built in a separate library package [@tunein/audio-player](./packages/audio-player/README.md)
+
+Live app demo can be found [here](https://matik12.github.io/tunein-app/)
+
+![App features](./docs/app.gif)
+
+## Core Features
+
+- Custom Player UI with play/pause controls, and station info display
+- Persistent Player Bar - appears at bottom of screen once a station is loaded
+- Global State Management - player state persists across navigation
+- Visual Feedback - loading animations and playing indicators
+- Non-interrupting Playback - navigating to new stations doesn't stop current playback
+
+**Important Notes**: This web app is just a proof of concept, and there are crucial implementation parts missing that are usually required for production readiness such as test coverage on different level (Testing Trophy), advanced playback implementation (browsers autoplay policies, cors considerations, network resilience etc), error reporting, playback metrics (quality, performance), product analytics, translations (potentially) etc.
 
 ## What's inside?
 
