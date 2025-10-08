@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from "react";
 import { getRouteApi, useRouter } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { useAudioPlayer } from "@/components/ui/audioPlayer";
+import { useStationAudioPlayer } from "@/context/stationAudioPlayerContext";
 import PlayButton from "@/components/ui/playButton";
 import { stationQueryOptions } from "./api/getStation";
 
@@ -11,8 +11,8 @@ const Station = () => {
   const stationId = route.useParams().stationId;
   const { data: station } = useSuspenseQuery(stationQueryOptions(stationId));
   const router = useRouter();
-  const { isPlaying, isLoading, currentStation, playStation, togglePlayPause } =
-    useAudioPlayer();
+  const { isPlaying, isLoading, currentStation, playStation, togglePlay } =
+    useStationAudioPlayer();
 
   useEffect(() => {
     // Auto-play station when browsing station details.
@@ -31,7 +31,7 @@ const Station = () => {
 
   const handlePlayClick = useCallback(() => {
     if (isStationActive) {
-      togglePlayPause();
+      togglePlay();
     } else {
       playStation(station);
     }
@@ -42,19 +42,13 @@ const Station = () => {
         station.name
       } from source: Station Details Page`,
     );
-  }, [
-    isStationActive,
-    isStationPlaying,
-    station,
-    togglePlayPause,
-    playStation,
-  ]);
+  }, [isStationActive, isStationPlaying, station, togglePlay, playStation]);
 
   return (
     <div>
       <button
         onClick={() => router.history.back()}
-        className="text-blue-400 hover:text-blue-300 mb-8"
+        className="text-blue-400 hover:text-blue-300 mb-8 cursor-pointer"
       >
         &larr; Back to Stations
       </button>

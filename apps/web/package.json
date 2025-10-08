@@ -16,6 +16,7 @@
     "@tanstack/react-query": "^5.66.0",
     "@tanstack/react-router": "^1.132.37",
     "@tanstack/router-plugin": "^1.132.37",
+    "@tunein/audio-player": "workspace:*",
     "@tunein/audio-player-react": "workspace:*"
   },
   "devDependencies": {

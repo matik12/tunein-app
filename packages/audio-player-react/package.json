@@ -9,15 +9,19 @@
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./*": "./dist/*.js"
+    "./components/icons": "./dist/components/icons/index.js",
+    "./*": "./dist/*.js",
+    ".": "./dist/index.js"
   },
   "private": true,
   "scripts": {
     "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "build:components": "tsc",
+    "build": "pnpm build:styles && pnpm build:components",
     "check-types": "tsc --noEmit",
     "dev:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
     "dev:components": "tsc --watch",
+    "dev": "pnpm dev:styles && pnpm dev:components",
     "lint": "eslint src --max-warnings 0"
   },
   "dependencies": {

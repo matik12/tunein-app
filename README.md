@@ -21,7 +21,7 @@ This example is set up to produce compiled styles for `audio-player-react` compo
 
 - Make sharing one `tailwind.config.ts` to apps and packages as easy as possible.
 - Make package compilation simple by only depending on the Vite Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `audio-player-react` package uses a `audioplayer-` prefix for it's classes.
+- Ensure Tailwind classes do not overwrite each other. The `audio-player-react` package can use a `audioplayer-` prefix for it's classes if needed.
 - Maintain clear package export boundaries.
 
 Another option is to consume `packages/audio-player-react` directly from source without building. If using this option, you will need to update the `tailwind.config.ts` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.

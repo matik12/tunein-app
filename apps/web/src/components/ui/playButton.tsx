@@ -1,6 +1,8 @@
-import Spinner from "@/components/ui/spinner";
-import PlayIcon from "../icons/playIcon";
-import PauseIcon from "../icons/pauseIcon";
+import {
+  PlayIcon,
+  PauseIcon,
+} from "@tunein/audio-player-react/components/icons";
+import { Spinner } from "@tunein/audio-player-react";
 
 type PlayButtonProps = {
   isActive: boolean;

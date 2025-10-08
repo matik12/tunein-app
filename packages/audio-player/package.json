@@ -5,7 +5,8 @@
     "dist"
   ],
   "exports": {
-    "./*": "./dist/*.js"
+    "./*": "./dist/*.js",
+    ".": "./dist/index.js"
   },
   "private": true,
   "scripts": {

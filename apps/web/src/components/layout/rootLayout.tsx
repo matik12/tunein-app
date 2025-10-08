@@ -1,11 +1,12 @@
 import { Outlet } from "@tanstack/react-router";
-import { AudioPlayer, AudioPlayerProvider } from "../ui/audioPlayer";
+import { StationAudioPlayerProvider } from "@/context/stationAudioPlayerContext";
+import AudioPlayer from "../ui/audioPlayer";
 import Container from "../ui/container";
 import MusicIcon from "../icons/musicIcon";
 
 const RootLayout = () => {
   return (
-    <AudioPlayerProvider>
+    <StationAudioPlayerProvider>
       <div className="bg-slate-900 text-white min-h-screen font-sans">
         <header className="py-4 border-b border-slate-800">
           <Container className="flex items-center justify-between">
@@ -28,7 +29,7 @@ const RootLayout = () => {
         {/* Audio Player is rendered here, outside the main content flow */}
         <AudioPlayer />
       </div>
-    </AudioPlayerProvider>
+    </StationAudioPlayerProvider>
   );
 };
 
