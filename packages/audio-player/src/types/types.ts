@@ -1,18 +1,18 @@
 export enum PlaybackState {
-  IDLE = "idle",
-  LOADING = "loading",
-  PLAYING = "playing",
-  PAUSED = "paused",
-  STOPPED = "stopped",
-  ERROR = "error",
+  IDLE = 'idle',
+  LOADING = 'loading',
+  PLAYING = 'playing',
+  PAUSED = 'paused',
+  STOPPED = 'stopped',
+  ERROR = 'error'
 }
 
 export enum PlayerEventType {
-  STATE_CHANGE = "stateChange",
-  VOLUME_CHANGE = "volumeChange",
-  ERROR = "error",
-  BUFFER_CHANGE = "bufferChange",
-  TIME_UPDATE = "timeUpdate",
+  STATE_CHANGE = 'stateChange',
+  VOLUME_CHANGE = 'volumeChange',
+  ERROR = 'error',
+  BUFFER_CHANGE = 'bufferChange',
+  TIME_UPDATE = 'timeUpdate'
 }
 
 export interface PlayerEventPayloads {
@@ -32,15 +32,13 @@ export interface PlayerEvent<T extends PlayerEventType> {
   timestamp: number;
 }
 
-export type PlayerEventListener<T extends PlayerEventType> = (
-  event: PlayerEvent<T>,
-) => void;
+export type PlayerEventListener<T extends PlayerEventType> = (event: PlayerEvent<T>) => void;
 
 export interface PlaybackOptions {
   autoplay?: boolean;
   preload?: boolean;
   volume?: number;
-  crossOrigin?: "anonymous" | "use-credentials";
+  crossOrigin?: 'anonymous' | 'use-credentials';
 }
 
 export interface AudioSource {
@@ -68,12 +66,6 @@ export interface IAudioEngine {
 }
 
 export interface IAudioPlayer extends IAudioEngine {
-  on<T extends PlayerEventType>(
-    event: T,
-    listener: PlayerEventListener<T>,
-  ): void;
-  off<T extends PlayerEventType>(
-    event: T,
-    listener: PlayerEventListener<T>,
-  ): void;
+  on<T extends PlayerEventType>(event: T, listener: PlayerEventListener<T>): void;
+  off<T extends PlayerEventType>(event: T, listener: PlayerEventListener<T>): void;
 }

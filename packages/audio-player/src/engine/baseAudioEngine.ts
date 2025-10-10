@@ -1,12 +1,5 @@
-import {
-  IAudioEngine,
-  PlaybackState,
-  AudioSource,
-  PlaybackOptions,
-  PlayerEventType,
-  BufferInfo,
-} from "../types/types";
-import EventManager from "../events/eventManager";
+import EventManager from '../events/eventManager';
+import { IAudioEngine, PlaybackState, AudioSource, PlaybackOptions, PlayerEventType, BufferInfo } from '../types/types';
 
 export default abstract class BaseAudioEngine implements IAudioEngine {
   protected audio: HTMLAudioElement;
@@ -21,57 +14,54 @@ export default abstract class BaseAudioEngine implements IAudioEngine {
   }
 
   protected setupAudioListeners(): void {
-    this.audio.addEventListener("loadstart", () => {
+    this.audio.addEventListener('loadstart', () => {
       this.updateState(PlaybackState.LOADING);
     });
 
-    this.audio.addEventListener("canplay", () => {
+    this.audio.addEventListener('canplay', () => {
       if (this.state === PlaybackState.LOADING) {
         this.updateState(PlaybackState.IDLE);
       }
     });
 
-    this.audio.addEventListener("playing", () => {
+    this.audio.addEventListener('playing', () => {
       this.updateState(PlaybackState.PLAYING);
     });
 
-    this.audio.addEventListener("pause", () => {
+    this.audio.addEventListener('pause', () => {
       if (this.state !== PlaybackState.STOPPED) {
         this.updateState(PlaybackState.PAUSED);
       }
     });
 
-    this.audio.addEventListener("ended", () => {
+    this.audio.addEventListener('ended', () => {
       this.updateState(PlaybackState.STOPPED);
     });
 
-    this.audio.addEventListener("error", () => {
+    this.audio.addEventListener('error', () => {
       this.updateState(PlaybackState.ERROR);
       this.eventManager.emit(PlayerEventType.ERROR, {
-        message: this.audio.error?.message || "Unknown error",
-        code: this.audio.error?.code,
+        message: this.audio.error?.message || 'Unknown error',
+        code: this.audio.error?.code
       });
     });
 
-    this.audio.addEventListener("volumechange", () => {
+    this.audio.addEventListener('volumechange', () => {
       this.eventManager.emit(PlayerEventType.VOLUME_CHANGE, {
         volume: this.audio.volume,
-        muted: this.audio.muted,
+        muted: this.audio.muted
       });
     });
 
-    this.audio.addEventListener("timeupdate", () => {
+    this.audio.addEventListener('timeupdate', () => {
       this.eventManager.emit(PlayerEventType.TIME_UPDATE, {
         currentTime: this.audio.currentTime,
-        duration: this.audio.duration,
+        duration: this.audio.duration
       });
     });
 
-    this.audio.addEventListener("progress", () => {
-      this.eventManager.emit(
-        PlayerEventType.BUFFER_CHANGE,
-        this.getBufferInfo(),
-      );
+    this.audio.addEventListener('progress', () => {
+      this.eventManager.emit(PlayerEventType.BUFFER_CHANGE, this.getBufferInfo());
     });
   }
 
@@ -80,14 +70,11 @@ export default abstract class BaseAudioEngine implements IAudioEngine {
     this.state = newState;
     this.eventManager.emit(PlayerEventType.STATE_CHANGE, {
       state: newState,
-      previousState,
+      previousState
     });
   }
 
-  async load(
-    source: AudioSource,
-    options: PlaybackOptions = {},
-  ): Promise<void> {
+  async load(source: AudioSource, options: PlaybackOptions = {}): Promise<void> {
     this.currentSource = source;
 
     if (options.crossOrigin) {
@@ -95,7 +82,7 @@ export default abstract class BaseAudioEngine implements IAudioEngine {
     }
 
     if (options.preload !== undefined) {
-      this.audio.preload = options.preload ? "auto" : "none";
+      this.audio.preload = options.preload ? 'auto' : 'none';
     }
 
     if (options.volume !== undefined) {
@@ -122,7 +109,7 @@ export default abstract class BaseAudioEngine implements IAudioEngine {
     } catch (error) {
       this.updateState(PlaybackState.ERROR);
       this.eventManager.emit(PlayerEventType.ERROR, {
-        message: error instanceof Error ? error.message : "Playback failed",
+        message: error instanceof Error ? error.message : 'Playback failed'
       });
       throw error;
     }
@@ -161,13 +148,13 @@ export default abstract class BaseAudioEngine implements IAudioEngine {
   getBufferInfo(): BufferInfo {
     return {
       buffered: this.audio.buffered,
-      duration: this.audio.duration || 0,
+      duration: this.audio.duration || 0
     };
   }
 
   destroy(): void {
     this.stop();
-    this.audio.src = "";
+    this.audio.src = '';
     this.audio.load();
     this.currentSource = null;
   }

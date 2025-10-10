@@ -1,7 +1,7 @@
 enum SortKey {
-  Default = "default",
-  Popularity = "popularity",
-  Reliability = "reliability",
+  DEFAULT = 'default',
+  POPULARITY = 'popularity',
+  RELIABILITY = 'reliability'
 }
 
 export default SortKey;

@@ -22,7 +22,8 @@
     "dev:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
     "dev:components": "tsc --watch",
     "dev": "pnpm dev:styles && pnpm dev:components",
-    "lint": "eslint src --max-warnings 0"
+    "lint": "eslint src --max-warnings 0",
+    "lint:fix": "eslint src --max-warnings 0 --fix"
   },
   "dependencies": {
     "@tunein/audio-player": "workspace:*"

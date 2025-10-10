@@ -1,20 +1,11 @@
-import {
-  PlayerEventType,
-  PlayerEventPayloads,
-  PlayerEvent,
-  PlayerEventListener,
-} from "../types/types";
+import { PlayerEventType, PlayerEventPayloads, PlayerEvent, PlayerEventListener } from '../types/types';
 
 export default class EventManager {
   // The internal listeners map uses 'any' for simplicity
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private listeners: Map<PlayerEventType, Set<PlayerEventListener<any>>> =
-    new Map();
+  private listeners: Map<PlayerEventType, Set<PlayerEventListener<any>>> = new Map();
 
-  on<T extends PlayerEventType>(
-    event: T,
-    listener: PlayerEventListener<T>,
-  ): void {
+  on<T extends PlayerEventType>(event: T, listener: PlayerEventListener<T>): void {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, new Set());
     }
@@ -22,10 +13,7 @@ export default class EventManager {
     this.listeners.get(event)!.add(listener);
   }
 
-  off<T extends PlayerEventType>(
-    event: T,
-    listener: PlayerEventListener<T>,
-  ): void {
+  off<T extends PlayerEventType>(event: T, listener: PlayerEventListener<T>): void {
     const eventListeners = this.listeners.get(event);
 
     if (eventListeners) {
@@ -33,14 +21,11 @@ export default class EventManager {
     }
   }
 
-  emit<T extends PlayerEventType>(
-    type: T,
-    payload: PlayerEventPayloads[T],
-  ): void {
+  emit<T extends PlayerEventType>(type: T, payload: PlayerEventPayloads[T]): void {
     const event: PlayerEvent<T> = {
       type,
       payload,
-      timestamp: Date.now(),
+      timestamp: Date.now()
     };
 
     const eventListeners = this.listeners.get(type);

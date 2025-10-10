@@ -1,4 +1,4 @@
-const MusicIcon = ({ className = "" }: { className?: string }) => (
+const MusicIcon = ({ className = '' }: { className?: string }) => (
   <svg
     className={className}
     viewBox="0 0 24 24"

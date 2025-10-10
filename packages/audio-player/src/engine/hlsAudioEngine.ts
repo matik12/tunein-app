@@ -1,6 +1,7 @@
-import BaseAudioEngine from "./baseAudioEngine";
-import { AudioSource } from "../types/types";
-import EventManager from "../events/eventManager";
+import EventManager from '../events/eventManager';
+import { AudioSource } from '../types/types';
+
+import BaseAudioEngine from './baseAudioEngine';
 
 /**
  * HLS Audio Engine with Adaptive Bitrate Streaming support
@@ -29,8 +30,8 @@ export class HLSAudioEngine extends BaseAudioEngine {
    * Check if HLS is natively supported or if we need hls.js
    */
   private validateHLSSupport(): boolean {
-    const canPlayHLS = this.audio.canPlayType("application/vnd.apple.mpegurl");
-    return canPlayHLS !== "";
+    const canPlayHLS = this.audio.canPlayType('application/vnd.apple.mpegurl');
+    return canPlayHLS !== '';
   }
 
   protected async loadSource(source: AudioSource): Promise<void> {
@@ -57,11 +58,11 @@ export class HLSAudioEngine extends BaseAudioEngine {
       this.audio.load();
 
       const onCanPlay = () => {
-        this.audio.removeEventListener("canplay", onCanPlay);
+        this.audio.removeEventListener('canplay', onCanPlay);
         resolve();
       };
 
-      this.audio.addEventListener("canplay", onCanPlay);
+      this.audio.addEventListener('canplay', onCanPlay);
     });
   }
 
@@ -77,16 +78,16 @@ export class HLSAudioEngine extends BaseAudioEngine {
 
       const onError = () => {
         cleanup();
-        reject(new Error("Failed to load HLS stream"));
+        reject(new Error('Failed to load HLS stream'));
       };
 
       const cleanup = () => {
-        this.audio.removeEventListener("canplay", onCanPlay);
-        this.audio.removeEventListener("error", onError);
+        this.audio.removeEventListener('canplay', onCanPlay);
+        this.audio.removeEventListener('error', onError);
       };
 
-      this.audio.addEventListener("canplay", onCanPlay, { once: true });
-      this.audio.addEventListener("error", onError, { once: true });
+      this.audio.addEventListener('canplay', onCanPlay, { once: true });
+      this.audio.addEventListener('error', onError, { once: true });
 
       this.audio.src = source.url;
       this.audio.load();

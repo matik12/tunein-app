@@ -1,4 +1,4 @@
-const RetryIcon = ({ className = "" }: { className?: string }) => (
+const RetryIcon = ({ className = '' }: { className?: string }) => (
   <svg
     className={className}
     fill="none"

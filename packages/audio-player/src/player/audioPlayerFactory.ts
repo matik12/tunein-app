@@ -1,10 +1,11 @@
-import AudioPlayer from "./audioPlayer";
-import { StreamAudioEngine } from "../engine/streamAudioEngine";
-import EventManager from "../events/eventManager";
-import { IAudioEngine } from "../types/types";
+import { StreamAudioEngine } from '../engine/streamAudioEngine';
+import EventManager from '../events/eventManager';
+import { IAudioEngine } from '../types/types';
+
+import AudioPlayer from './audioPlayer';
 
 export enum AudioPlayerType {
-  STREAM = "stream",
+  STREAM = 'stream'
   // Future: HLS = 'hls',
 }
 
@@ -23,10 +24,7 @@ export class AudioPlayerFactory {
     return new AudioPlayer(engine, eventManager);
   }
 
-  private static createEngine(
-    type: AudioPlayerType,
-    eventManager: EventManager,
-  ): IAudioEngine {
+  private static createEngine(type: AudioPlayerType, eventManager: EventManager): IAudioEngine {
     switch (type) {
       case AudioPlayerType.STREAM:
         return new StreamAudioEngine(eventManager);

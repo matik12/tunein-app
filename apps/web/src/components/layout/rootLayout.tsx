@@ -1,8 +1,10 @@
-import { Outlet } from "@tanstack/react-router";
-import { StationAudioPlayerProvider } from "@/context/stationAudioPlayerContext";
-import AudioPlayer from "../ui/audioPlayer";
-import Container from "../ui/container";
-import MusicIcon from "../icons/musicIcon";
+import { Outlet } from '@tanstack/react-router';
+
+import { StationAudioPlayerProvider } from '@/context/stationAudioPlayerContext';
+
+import MusicIcon from '../icons/musicIcon';
+import AudioPlayer from '../ui/audioPlayer';
+import Container from '../ui/container';
 
 const RootLayout = () => {
   return (
@@ -12,9 +14,7 @@ const RootLayout = () => {
           <Container className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <MusicIcon className="w-10 h-10 text-blue-500" />
-              <h1 className="text-2xl font-bold tracking-tighter">
-                TuneIn Radio
-              </h1>
+              <h1 className="text-2xl font-bold tracking-tighter">TuneIn Radio</h1>
             </div>
           </Container>
         </header>

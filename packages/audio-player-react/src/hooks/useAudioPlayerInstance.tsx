@@ -1,6 +1,7 @@
-import { useRef, useEffect } from "react";
-import { AudioPlayer } from "@tunein/audio-player";
-import useAudioPlayer from "./useAudioPlayer";
+import { AudioPlayer } from '@tunein/audio-player';
+import { useRef, useEffect } from 'react';
+
+import useAudioPlayer from './useAudioPlayer';
 
 /**
  * Hook for creating and managing a player instance lifecycle

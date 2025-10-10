@@ -1,20 +1,51 @@
 module.exports = {
   env: {
+    browser: true,
+    es2021: true,
     node: true,
   },
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
   ],
-  plugins: ['@typescript-eslint'],
   parserOptions: {
-    sourceType: 'module',
+    sourceType: "module",
     ecmaVersion: 2020,
   },
+  plugins: ["@typescript-eslint", "prettier"],
   rules: {
-    '@typescript-eslint/no-non-null-assertion': 'off',
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "prettier/prettier": "error",
+    "import/no-cycle": "error",
+    "import/order": [
+      "error",
+      {
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+        ],
+        "newlines-between": "always",
+        alphabetize: { order: "asc", caseInsensitive: true },
+      },
+    ],
+    "import/default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-as-default": "off",
   },
-  ignorePatterns: ['**/node_modules/**', 'dist/'],
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
+  ignorePatterns: ["**/node_modules/**", "dist/"],
 };

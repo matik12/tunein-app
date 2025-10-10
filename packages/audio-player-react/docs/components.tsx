@@ -1,14 +1,11 @@
-import { UseAudioPlayerReturn } from "../src/hooks/useAudioPlayer";
+import { UseAudioPlayerReturn } from '../src/hooks/useAudioPlayer';
 
 export interface AudioPlayerControlsProps {
   player: UseAudioPlayerReturn;
   className?: string;
 }
 
-export const AudioPlayerControls = ({
-  player,
-  className = "",
-}: AudioPlayerControlsProps) => {
+export const AudioPlayerControls = ({ player, className = '' }: AudioPlayerControlsProps) => {
   const handlePlayPause = () => {
     if (player.isPlaying) {
       player.pause();
@@ -19,18 +16,10 @@ export const AudioPlayerControls = ({
 
   return (
     <div className={`audio-player-controls ${className}`}>
-      <button
-        onClick={handlePlayPause}
-        disabled={player.isLoading}
-        aria-label={player.isPlaying ? "Pause" : "Play"}
-      >
-        {player.isPlaying ? "⏸" : "▶"}
+      <button onClick={handlePlayPause} disabled={player.isLoading} aria-label={player.isPlaying ? 'Pause' : 'Play'}>
+        {player.isPlaying ? '⏸' : '▶'}
       </button>
-      <button
-        onClick={player.stop}
-        disabled={player.state === "idle" || player.state === "stopped"}
-        aria-label="Stop"
-      >
+      <button onClick={player.stop} disabled={player.state === 'idle' || player.state === 'stopped'} aria-label="Stop">
         ⏹
       </button>
     </div>
@@ -43,10 +32,7 @@ export interface VolumeControlProps {
   className?: string;
 }
 
-export const VolumeControl = ({
-  player,
-  className = "",
-}: VolumeControlProps) => {
+export const VolumeControl = ({ player, className = '' }: VolumeControlProps) => {
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     player.setVolume(parseFloat(e.target.value));
   };
@@ -75,32 +61,27 @@ export interface PlaybackStateProps {
   className?: string;
 }
 
-export const PlaybackStateIndicator = ({
-  player,
-  className = "",
-}: PlaybackStateProps) => {
+export const PlaybackStateIndicator = ({ player, className = '' }: PlaybackStateProps) => {
   const getStateText = () => {
     switch (player.state) {
-      case "playing":
-        return "Playing";
-      case "paused":
-        return "Paused";
-      case "loading":
-        return "Loading...";
-      case "stopped":
-        return "Stopped";
-      case "error":
+      case 'playing':
+        return 'Playing';
+      case 'paused':
+        return 'Paused';
+      case 'loading':
+        return 'Loading...';
+      case 'stopped':
+        return 'Stopped';
+      case 'error':
         return `Error: ${player.error}`;
       default:
-        return "Idle";
+        return 'Idle';
     }
   };
 
   return (
     <div className={`playback-state ${className}`}>
-      <span className={`state-indicator state-${player.state}`}>
-        {getStateText()}
-      </span>
+      <span className={`state-indicator state-${player.state}`}>{getStateText()}</span>
     </div>
   );
 };
@@ -117,7 +98,7 @@ export const AudioPlayerComponent = ({
   player,
   showVolume = true,
   showState = true,
-  className = "",
+  className = ''
 }: AudioPlayerComponentProps) => {
   return (
     <div className={`audio-player ${className}`}>

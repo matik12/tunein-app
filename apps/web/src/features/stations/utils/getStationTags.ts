@@ -1,4 +1,4 @@
-import { Station } from "@/types/api/station";
+import { Station } from '@/types/api/station';
 
 const getStationTags = (stations: Station[]): string[] => {
   if (!stations.length) {

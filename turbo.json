@@ -7,10 +7,16 @@
       "outputs": ["dist/**"]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "cache": false
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "cache": false
     },
     "check-types": {
-      "dependsOn": ["^check-types"]
+      "dependsOn": ["^check-types"],
+      "cache": false
     },
     "dev": {
       "cache": false,

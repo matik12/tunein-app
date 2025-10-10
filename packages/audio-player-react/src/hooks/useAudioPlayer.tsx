@@ -1,12 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
 import {
   AudioPlayer,
   PlaybackState,
   AudioSource,
   PlaybackOptions,
   PlayerEventType,
-  PlayerEvent,
-} from "@tunein/audio-player";
+  PlayerEvent
+} from '@tunein/audio-player';
+import { useState, useEffect, useCallback } from 'react';
 
 export interface UseAudioPlayerReturn {
   load: (source: AudioSource, options?: PlaybackOptions) => Promise<void>;
@@ -36,9 +36,7 @@ const useAudioPlayer = (player: AudioPlayer): UseAudioPlayerReturn => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleStateChange = (
-      event: PlayerEvent<PlayerEventType.STATE_CHANGE>,
-    ) => {
+    const handleStateChange = (event: PlayerEvent<PlayerEventType.STATE_CHANGE>) => {
       setState(event.payload.state);
 
       if (event.payload.state !== PlaybackState.ERROR) {
@@ -46,18 +44,14 @@ const useAudioPlayer = (player: AudioPlayer): UseAudioPlayerReturn => {
       }
     };
 
-    const handleVolumeChange = (
-      event: PlayerEvent<PlayerEventType.VOLUME_CHANGE>,
-    ) => {
+    const handleVolumeChange = (event: PlayerEvent<PlayerEventType.VOLUME_CHANGE>) => {
       setVolumeState(event.payload.volume);
     };
 
     // This event handler will fire and update the state very frequently.
     // It may be useful to throttle state updates,
     // unless real-time displaying of current playback time is required.
-    const handleTimeUpdate = (
-      event: PlayerEvent<PlayerEventType.TIME_UPDATE>,
-    ) => {
+    const handleTimeUpdate = (event: PlayerEvent<PlayerEventType.TIME_UPDATE>) => {
       setCurrentTime(event.payload.currentTime);
       setDuration(event.payload.duration);
     };
@@ -83,7 +77,7 @@ const useAudioPlayer = (player: AudioPlayer): UseAudioPlayerReturn => {
     async (options?: { restart?: boolean }) => {
       await player.play(options);
     },
-    [player],
+    [player]
   );
 
   const pause = useCallback(() => {
@@ -98,14 +92,14 @@ const useAudioPlayer = (player: AudioPlayer): UseAudioPlayerReturn => {
     async (source: AudioSource, options?: PlaybackOptions) => {
       await player.load(source, options);
     },
-    [player],
+    [player]
   );
 
   const setVolume = useCallback(
     (volume: number) => {
       player.setVolume(volume);
     },
-    [player],
+    [player]
   );
 
   return {
@@ -122,7 +116,7 @@ const useAudioPlayer = (player: AudioPlayer): UseAudioPlayerReturn => {
     isPlaying: state === PlaybackState.PLAYING,
     isPaused: state === PlaybackState.PAUSED,
     isLoading: state === PlaybackState.LOADING,
-    isError: state === PlaybackState.ERROR,
+    isError: state === PlaybackState.ERROR
   };
 };
 

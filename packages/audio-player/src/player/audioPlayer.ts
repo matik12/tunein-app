@@ -1,3 +1,4 @@
+import EventManager from '../events/eventManager';
 import {
   IAudioPlayer,
   IAudioEngine,
@@ -6,9 +7,8 @@ import {
   PlaybackOptions,
   PlayerEventType,
   PlayerEventListener,
-  BufferInfo,
-} from "../types/types";
-import EventManager from "../events/eventManager";
+  BufferInfo
+} from '../types/types';
 
 /**
  * Main AudioPlayer class that composes an audio engine with event management
@@ -65,17 +65,11 @@ export default class AudioPlayer implements IAudioPlayer {
   }
 
   // Event management methods
-  on<T extends PlayerEventType>(
-    event: T,
-    listener: PlayerEventListener<T>,
-  ): void {
+  on<T extends PlayerEventType>(event: T, listener: PlayerEventListener<T>): void {
     this.eventManager.on(event, listener);
   }
 
-  off<T extends PlayerEventType>(
-    event: T,
-    listener: PlayerEventListener<T>,
-  ): void {
+  off<T extends PlayerEventType>(event: T, listener: PlayerEventListener<T>): void {
     this.eventManager.off(event, listener);
   }
 

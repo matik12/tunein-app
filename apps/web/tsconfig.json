@@ -4,7 +4,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@tunein/*/components/icons": ["../../packages/*/src/components/icons/"],
+      "@tunein/*": ["../../packages/*/src/"]
     }
   }
 }

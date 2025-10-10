@@ -1,7 +1,10 @@
 {
   "extends": "@tunein/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@tunein/*": ["../*/src/"]
+    }
   },
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"]

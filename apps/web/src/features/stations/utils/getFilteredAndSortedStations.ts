@@ -1,11 +1,8 @@
-import { Station } from "@/types/api/station";
-import SortKey from "../types/sortKey";
+import { Station } from '@/types/api/station';
 
-const getFilteredAndSortedStations = (
-  stations: Station[],
-  tag: string | null,
-  sortBy: string,
-) => {
+import SortKey from '../types/sortKey';
+
+const getFilteredAndSortedStations = (stations: Station[], tag: string | null, sortBy: string) => {
   let result = stations;
 
   if (tag) {
@@ -13,12 +10,10 @@ const getFilteredAndSortedStations = (
   }
 
   switch (sortBy) {
-    case SortKey.Popularity:
-      result = [...result].sort(
-        (a, b) => (b.popularity ?? -1) - (a.popularity ?? -1),
-      );
+    case SortKey.POPULARITY:
+      result = [...result].sort((a, b) => (b.popularity ?? -1) - (a.popularity ?? -1));
       break;
-    case SortKey.Reliability:
+    case SortKey.RELIABILITY:
       result = [...result].sort((a, b) => b.reliability - a.reliability);
       break;
     default:

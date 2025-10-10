@@ -1,6 +1,6 @@
-import AudioCover from "./audioCover";
-import AudioMetadata from "./audioMetadata";
-import PlayButton from "./playButton";
+import AudioCover from './audioCover';
+import AudioMetadata from './audioMetadata';
+import PlayButton from './playButton';
 
 type AudioPlayerProps = {
   title: string;
@@ -19,24 +19,15 @@ const AudioPlayer = ({
   isLoading,
   isPlaying,
   isError,
-  onTogglePlay,
+  onTogglePlay
 }: AudioPlayerProps) => (
   <div className="flex items-center justify-between h-24">
     <div className="flex items-center space-x-4 min-w-0">
       <AudioCover coverUrl={coverUrl} title={title} />
-      <AudioMetadata
-        title={title}
-        description={description}
-        showError={isError}
-      />
+      <AudioMetadata title={title} description={description} showError={isError} />
     </div>
     <div className="flex items-center space-x-4">
-      <PlayButton
-        isLoading={isLoading}
-        isPlaying={isPlaying}
-        isError={isError}
-        onTogglePlay={onTogglePlay}
-      />
+      <PlayButton isLoading={isLoading} isPlaying={isPlaying} isError={isError} onTogglePlay={onTogglePlay} />
     </div>
   </div>
 );

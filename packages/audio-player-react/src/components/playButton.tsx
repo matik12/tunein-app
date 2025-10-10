@@ -1,7 +1,7 @@
-import Spinner from "./spinner";
-import PlayIcon from "./icons/playIcon";
-import PauseIcon from "./icons/pauseIcon";
-import RetryIcon from "./icons/retryIcon";
+import PauseIcon from './icons/pauseIcon';
+import PlayIcon from './icons/playIcon';
+import RetryIcon from './icons/retryIcon';
+import Spinner from './spinner';
 
 type PlayButtonProps = {
   isPlaying: boolean;
@@ -11,18 +11,12 @@ type PlayButtonProps = {
   className?: string;
 };
 
-const PlayButton = ({
-  isPlaying,
-  isLoading,
-  isError,
-  onTogglePlay,
-  className = "",
-}: PlayButtonProps) => {
+const PlayButton = ({ isPlaying, isLoading, isError, onTogglePlay, className = '' }: PlayButtonProps) => {
   return (
     <button
       onClick={onTogglePlay}
-      aria-label={isError ? "Retry" : isPlaying ? "Pause" : "Play"}
-      className={`flex items-center justify-center w-14 h-14 text-white rounded-full transition-all transform hover:scale-105 active:scale-95 shadow-lg cursor-pointer ${className} ${isError ? "bg-red-600 hover:bg-red-700" : "bg-blue-600 hover:bg-blue-700"}`}
+      aria-label={isError ? 'Retry' : isPlaying ? 'Pause' : 'Play'}
+      className={`flex items-center justify-center w-14 h-14 text-white rounded-full transition-all transform hover:scale-105 active:scale-95 shadow-lg cursor-pointer ${className} ${isError ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'}`}
     >
       {isError ? (
         <RetryIcon className="w-8 h-8" />

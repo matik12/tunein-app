@@ -1,8 +1,5 @@
-import {
-  PlayIcon,
-  PauseIcon,
-} from "@tunein/audio-player-react/components/icons";
-import { Spinner } from "@tunein/audio-player-react";
+import { Spinner } from '@tunein/audio-player-react';
+import { PlayIcon, PauseIcon } from '@tunein/audio-player-react/components/icons';
 
 type PlayButtonProps = {
   isActive: boolean;
@@ -12,17 +9,11 @@ type PlayButtonProps = {
   className?: string;
 };
 
-const PlayButton = ({
-  isActive,
-  isPlaying,
-  isLoading,
-  onPlayClick,
-  className = "",
-}: PlayButtonProps) => {
+const PlayButton = ({ isActive, isPlaying, isLoading, onPlayClick, className = '' }: PlayButtonProps) => {
   return (
     <button
       onClick={onPlayClick}
-      aria-label={isPlaying ? "Pause" : "Play"}
+      aria-label={isPlaying ? 'Pause' : 'Play'}
       className={`flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-transform transform hover:scale-105 active:scale-95 disabled:bg-gray-500 cursor-pointer disabled:cursor-not-allowed ${className}`}
     >
       {isActive && isLoading ? (

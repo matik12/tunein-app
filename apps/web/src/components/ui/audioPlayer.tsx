@@ -1,10 +1,11 @@
-import { useStationAudioPlayer } from "@/context/stationAudioPlayerContext";
-import Container from "./container";
-import { AudioPlayer as BaseAudioPlayer } from "@tunein/audio-player-react";
+import { AudioPlayer as BaseAudioPlayer } from '@tunein/audio-player-react';
+
+import { useStationAudioPlayer } from '@/context/stationAudioPlayerContext';
+
+import Container from './container';
 
 const AudioPlayer = () => {
-  const { currentStation, isPlaying, togglePlay, isLoading, isError } =
-    useStationAudioPlayer();
+  const { currentStation, isPlaying, togglePlay, isLoading, isError } = useStationAudioPlayer();
 
   // Don't render the player if no station is selected
   if (!currentStation) {

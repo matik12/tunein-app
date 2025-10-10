@@ -6,8 +6,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "check-types": "turbo run check-types",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "lint:fix": "turbo run lint:fix",
+    "check-types": "turbo run check-types"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

@@ -1,6 +1,7 @@
-import BaseAudioEngine from "./baseAudioEngine";
-import { AudioSource } from "../types/types";
-import EventManager from "../events/eventManager";
+import EventManager from '../events/eventManager';
+import { AudioSource } from '../types/types';
+
+import BaseAudioEngine from './baseAudioEngine';
 
 /**
  * Audio engine optimized for streaming audio (radio stations, live streams)
@@ -20,16 +21,16 @@ export class StreamAudioEngine extends BaseAudioEngine {
 
       const onError = () => {
         cleanup();
-        reject(new Error("Failed to load stream"));
+        reject(new Error('Failed to load stream'));
       };
 
       const cleanup = () => {
-        this.audio.removeEventListener("canplay", onCanPlay);
-        this.audio.removeEventListener("error", onError);
+        this.audio.removeEventListener('canplay', onCanPlay);
+        this.audio.removeEventListener('error', onError);
       };
 
-      this.audio.addEventListener("canplay", onCanPlay, { once: true });
-      this.audio.addEventListener("error", onError, { once: true });
+      this.audio.addEventListener('canplay', onCanPlay, { once: true });
+      this.audio.addEventListener('error', onError, { once: true });
 
       this.audio.src = source.url;
       this.audio.load();

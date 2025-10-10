@@ -1,6 +1,8 @@
-import { queryOptions } from "@tanstack/react-query";
-import { Station } from "@/types/api/station";
-import { STATION_API_URL } from "./stationApi";
+import { queryOptions } from '@tanstack/react-query';
+
+import { Station } from '@/types/api/station';
+
+import { STATION_API_URL } from './stationApi';
 
 type StationsResponse = {
   data: Station[];
@@ -13,8 +15,8 @@ type GetStationParams = {
 
 export const stationQueryOptions = (stationId: string) =>
   queryOptions({
-    queryKey: ["stations", { stationId }],
-    queryFn: ({ signal }) => getStation({ signal, stationId }),
+    queryKey: ['stations', { stationId }],
+    queryFn: ({ signal }) => getStation({ signal, stationId })
   });
 
 // Usually in production use cases, there is a dedicated endpoint to fetch a single station by ID.
@@ -24,9 +26,7 @@ export const getStation = async ({ signal, stationId }: GetStationParams) => {
     const response = await fetch(STATION_API_URL, { signal });
 
     if (!response.ok) {
-      throw new Error(
-        `Failed to load station. Status code: ${response.status}`,
-      );
+      throw new Error(`Failed to load station. Status code: ${response.status}`);
     }
 
     const responseData: StationsResponse = await response.json();
