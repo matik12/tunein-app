@@ -8,7 +8,11 @@ export default defineConfig({
   plugins: [
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     tailwindcss(),
-    react(),
+    react({
+      babel: {
+        plugins: ["babel-plugin-react-compiler"],
+      },
+    }),
     viteTsconfigPaths(),
   ],
   base: "/tunein-app/",
